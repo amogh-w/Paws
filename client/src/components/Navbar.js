@@ -16,12 +16,12 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import SearchIcon from "@material-ui/icons/Search";
-import DescriptionIcon from "@material-ui/icons/Description";
-import InfoIcon from "@material-ui/icons/Info";
+// import SearchIcon from "@material-ui/icons/Search";
+// import DescriptionIcon from "@material-ui/icons/Description";
+// import InfoIcon from "@material-ui/icons/Info";
+// import ChatIcon from "@material-ui/icons/Chat";
 import Brightness5Icon from "@material-ui/icons/Brightness5";
 import Brightness2Icon from "@material-ui/icons/Brightness2";
-import ChatIcon from "@material-ui/icons/Chat";
 
 import { Link } from "react-router-dom";
 import clsx from "clsx";
@@ -188,31 +188,31 @@ const Navbar = ({ darkState, handleThemeChange }) => {
             </ListItem>
             <ListItem button component={Link} to="/appointment">
               <ListItemIcon>
-                <SearchIcon />
+                <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Appointment</ListItemText>
             </ListItem>
             <ListItem button component={Link} to="/doctor">
               <ListItemIcon>
-                <DescriptionIcon />
+                <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Doctor</ListItemText>
             </ListItem>
             <ListItem button component={Link} to="/owner">
               <ListItemIcon>
-                <InfoIcon />
+                <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Owner</ListItemText>
             </ListItem>
             <ListItem button component={Link} to="/pet">
               <ListItemIcon>
-                <ChatIcon />
+                <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Pet</ListItemText>
             </ListItem>
             <ListItem button component={Link} to="/review">
               <ListItemIcon>
-                <ChatIcon />
+                <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Review</ListItemText>
             </ListItem>
@@ -299,31 +299,31 @@ const Navbar = ({ darkState, handleThemeChange }) => {
             </ListItem>
             <ListItem button component={Link} to="/appointment">
               <ListItemIcon>
-                <SearchIcon />
+                <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Appointment</ListItemText>
             </ListItem>
             <ListItem button component={Link} to="/doctor">
               <ListItemIcon>
-                <DescriptionIcon />
+                <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Doctor</ListItemText>
             </ListItem>
             <ListItem button component={Link} to="/owner">
               <ListItemIcon>
-                <InfoIcon />
+                <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Owner</ListItemText>
             </ListItem>
             <ListItem button component={Link} to="/pet">
               <ListItemIcon>
-                <ChatIcon />
+                <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Pet</ListItemText>
             </ListItem>
             <ListItem button component={Link} to="/review">
               <ListItemIcon>
-                <ChatIcon />
+                <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Review</ListItemText>
             </ListItem>
@@ -399,31 +399,31 @@ const Navbar = ({ darkState, handleThemeChange }) => {
             </ListItem>
             <ListItem button component={Link} to="/appointment">
               <ListItemIcon>
-                <SearchIcon />
+                <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Appointment</ListItemText>
             </ListItem>
             <ListItem button component={Link} to="/doctor">
               <ListItemIcon>
-                <DescriptionIcon />
+                <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Doctor</ListItemText>
             </ListItem>
             <ListItem button component={Link} to="/owner">
               <ListItemIcon>
-                <InfoIcon />
+                <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Owner</ListItemText>
             </ListItem>
             <ListItem button component={Link} to="/pet">
               <ListItemIcon>
-                <ChatIcon />
+                <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Pet</ListItemText>
             </ListItem>
             <ListItem button component={Link} to="/review">
               <ListItemIcon>
-                <ChatIcon />
+                <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Review</ListItemText>
             </ListItem>

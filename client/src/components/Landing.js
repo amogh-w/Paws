@@ -1,5 +1,5 @@
-import { Paper, Typography } from "@material-ui/core";
 import React from "react";
+import { Paper, Typography } from "@material-ui/core";
 
 import logo from ".\\paws.png";
 
