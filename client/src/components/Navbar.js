@@ -4,28 +4,32 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Hidden from "@material-ui/core/Hidden";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
-import clsx from "clsx";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import useTheme from "@material-ui/core/styles/useTheme";
 import Drawer from "@material-ui/core/Drawer";
 import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import IconButton from "@material-ui/core/IconButton";
+import List from "@material-ui/core/List";
+
+import MenuIcon from "@material-ui/icons/Menu";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import SearchIcon from "@material-ui/icons/Search";
 import DescriptionIcon from "@material-ui/icons/Description";
 import InfoIcon from "@material-ui/icons/Info";
-import List from "@material-ui/core/List";
-// import logo from "../media/logo.png";
 import Brightness5Icon from "@material-ui/icons/Brightness5";
 import Brightness2Icon from "@material-ui/icons/Brightness2";
 import ChatIcon from "@material-ui/icons/Chat";
+
+import { Link } from "react-router-dom";
+import clsx from "clsx";
+
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import useTheme from "@material-ui/core/styles/useTheme";
+
+import logo from ".\\paws.png";
 
 const Navbar = ({ darkState, handleThemeChange }) => {
   const [open, setOpen] = React.useState(false);
@@ -141,11 +145,11 @@ const Navbar = ({ darkState, handleThemeChange }) => {
               noWrap
               className={classes.title}
             >
-              {/* <img
+              <img
                 src={logo}
                 style={{ width: "50px", marginRight: "20px" }}
                 alt="logo"
-              /> */}
+              />
             </Typography>{" "}
             <Button
               color="primary"
@@ -176,35 +180,41 @@ const Navbar = ({ darkState, handleThemeChange }) => {
           </div>
           <Divider />
           <List>
-            <ListItem button component={Link} to="/">
+            <ListItem button component={Link} to="/admin">
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
-              <ListItemText>Dashboard</ListItemText>
+              <ListItemText>Admin</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/analyzer">
+            <ListItem button component={Link} to="/appointment">
               <ListItemIcon>
                 <SearchIcon />
               </ListItemIcon>
-              <ListItemText>Tweet Analyzer</ListItemText>
+              <ListItemText>Appointment</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/resources">
+            <ListItem button component={Link} to="/doctor">
               <ListItemIcon>
                 <DescriptionIcon />
               </ListItemIcon>
-              <ListItemText>Resources</ListItemText>
+              <ListItemText>Doctor</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/about">
+            <ListItem button component={Link} to="/owner">
               <ListItemIcon>
                 <InfoIcon />
               </ListItemIcon>
-              <ListItemText>About</ListItemText>
+              <ListItemText>Owner</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/chatbot">
+            <ListItem button component={Link} to="/pet">
               <ListItemIcon>
                 <ChatIcon />
               </ListItemIcon>
-              <ListItemText>Chatbot</ListItemText>
+              <ListItemText>Pet</ListItemText>
+            </ListItem>
+            <ListItem button component={Link} to="/review">
+              <ListItemIcon>
+                <ChatIcon />
+              </ListItemIcon>
+              <ListItemText>Review</ListItemText>
             </ListItem>
           </List>
           <Divider />
@@ -234,11 +244,11 @@ const Navbar = ({ darkState, handleThemeChange }) => {
             >
               <MenuIcon />
             </IconButton>
-            {/* <img
+            <img
               src={logo}
               style={{ width: "50px", marginRight: "20px" }}
               alt="logo"
-            /> */}
+            />
             <Typography
               component="h1"
               variant="h6"
@@ -246,7 +256,7 @@ const Navbar = ({ darkState, handleThemeChange }) => {
               noWrap
               className={classes.title}
             >
-              COVIDian #IndiaFightsCorona
+              Paws
             </Typography>
             <Button
               color="primary"
@@ -281,35 +291,41 @@ const Navbar = ({ darkState, handleThemeChange }) => {
           </div>
           <Divider />
           <List>
-            <ListItem button component={Link} to="/">
+            <ListItem button component={Link} to="/admin">
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
-              <ListItemText>Dashboard</ListItemText>
+              <ListItemText>Admin</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/analyzer">
+            <ListItem button component={Link} to="/appointment">
               <ListItemIcon>
                 <SearchIcon />
               </ListItemIcon>
-              <ListItemText>Tweet Analyzer</ListItemText>
+              <ListItemText>Appointment</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/resources">
+            <ListItem button component={Link} to="/doctor">
               <ListItemIcon>
                 <DescriptionIcon />
               </ListItemIcon>
-              <ListItemText>Resources</ListItemText>
+              <ListItemText>Doctor</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/about">
+            <ListItem button component={Link} to="/owner">
               <ListItemIcon>
                 <InfoIcon />
               </ListItemIcon>
-              <ListItemText>About</ListItemText>
+              <ListItemText>Owner</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/chatbot">
+            <ListItem button component={Link} to="/pet">
               <ListItemIcon>
                 <ChatIcon />
               </ListItemIcon>
-              <ListItemText>Chatbot</ListItemText>
+              <ListItemText>Pet</ListItemText>
+            </ListItem>
+            <ListItem button component={Link} to="/review">
+              <ListItemIcon>
+                <ChatIcon />
+              </ListItemIcon>
+              <ListItemText>Review</ListItemText>
             </ListItem>
           </List>
           <Divider />
@@ -340,11 +356,11 @@ const Navbar = ({ darkState, handleThemeChange }) => {
               noWrap
               className={classes.title}
             >
-              {/* <img
+              <img
                 src={logo}
                 style={{ width: "50px", marginRight: "20px" }}
                 alt="logo"
-              /> */}
+              />
             </Typography>{" "}
             <Button
               color="primary"
@@ -375,35 +391,41 @@ const Navbar = ({ darkState, handleThemeChange }) => {
           </div>
           <Divider />
           <List>
-            <ListItem button component={Link} to="/">
+            <ListItem button component={Link} to="/admin">
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
-              <ListItemText>Dashboard</ListItemText>
+              <ListItemText>Admin</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/analyzer">
+            <ListItem button component={Link} to="/appointment">
               <ListItemIcon>
                 <SearchIcon />
               </ListItemIcon>
-              <ListItemText>Tweet Analyzer</ListItemText>
+              <ListItemText>Appointment</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/resources">
+            <ListItem button component={Link} to="/doctor">
               <ListItemIcon>
                 <DescriptionIcon />
               </ListItemIcon>
-              <ListItemText>Resources</ListItemText>
+              <ListItemText>Doctor</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/about">
+            <ListItem button component={Link} to="/owner">
               <ListItemIcon>
                 <InfoIcon />
               </ListItemIcon>
-              <ListItemText>About</ListItemText>
+              <ListItemText>Owner</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/chatbot">
+            <ListItem button component={Link} to="/pet">
               <ListItemIcon>
                 <ChatIcon />
               </ListItemIcon>
-              <ListItemText>Chatbot</ListItemText>
+              <ListItemText>Pet</ListItemText>
+            </ListItem>
+            <ListItem button component={Link} to="/review">
+              <ListItemIcon>
+                <ChatIcon />
+              </ListItemIcon>
+              <ListItemText>Review</ListItemText>
             </ListItem>
           </List>
           <Divider />
