@@ -1,7 +1,8 @@
 import React from "react";
-import { Paper, Typography } from "@material-ui/core";
+import { Button, Paper, Typography } from "@material-ui/core";
+import { Link as RouterLink } from "react-router-dom";
 
-import logo from ".\\paws.png";
+import logo from "./paws.png";
 
 const Landing = () => {
   return (
@@ -39,6 +40,47 @@ const Landing = () => {
           and that helps to connect Veterinary doctors and grooming clinics to
           pet owners for the welfare of their pets.
         </Typography>
+      </Paper>
+      <Paper style={{ margin: "20px", padding: "20px" }}>
+        <div style={{ textAlign: "center" }}>
+          <Typography variant="h4">Portal Links</Typography>
+          <Button
+            to="/owner"
+            color="primary"
+            variant="contained"
+            component={RouterLink}
+            style={{ width: "20%", margin: "10px" }}
+          >
+            Owner
+          </Button>
+          <Button
+            to="/doctor"
+            color="primary"
+            variant="contained"
+            component={RouterLink}
+            style={{ width: "20%", margin: "10px" }}
+          >
+            Doctor
+          </Button>
+          <Button
+            to="/parlour"
+            color="primary"
+            variant="contained"
+            component={RouterLink}
+            style={{ width: "20%", margin: "10px" }}
+          >
+            Parlour
+          </Button>
+          <Button
+            to="/admin"
+            color="primary"
+            variant="contained"
+            component={RouterLink}
+            style={{ width: "20%", margin: "10px" }}
+          >
+            Admin
+          </Button>
+        </div>
       </Paper>
     </div>
   );

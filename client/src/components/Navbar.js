@@ -29,7 +29,7 @@ import clsx from "clsx";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import useTheme from "@material-ui/core/styles/useTheme";
 
-import logo from ".\\paws.png";
+import logo from "./paws.png";
 
 const Navbar = ({ darkState, handleThemeChange }) => {
   const [open, setOpen] = React.useState(false);
