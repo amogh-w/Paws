@@ -106,6 +106,7 @@ const Owner = () => {
 
   const attachPhoto = () => {
     toBase64(photoFile).then((res) => {
+      console.log(res.length);
       setRegistrationValues({ ...registrationValues, photo: res });
     });
   };
@@ -159,12 +160,16 @@ const Owner = () => {
     setRegistrationValues({ ...registrationValues, [name]: value });
   };
 
+  const [loggedInUser, setLoggedInUser] = useState({});
+
   const validateLogin = () => {
-    for (var i = 0; i < data.owners.length; i++) {
+    var i;
+    for (i = 0; i < data.owners.length; i++) {
       if (
         values.username === data.owners[i].username &&
         values.password === data.owners[i].password
       ) {
+        setLoggedInUser(data.owners[i]);
         setLoggedIn(true);
         return;
       }
@@ -325,6 +330,11 @@ const Owner = () => {
           </div>
         ) : (
           <div>
+            <div style={{ textAlign: "center" }}>
+              <img src={loggedInUser.photo} style={{ width: "50px" }} />
+              <Typography variant="h4">{loggedInUser.name}</Typography>
+            </div>
+            <br />
             <div style={{ textAlign: "center" }}>
               <Button
                 variant="contained"
