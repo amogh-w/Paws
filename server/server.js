@@ -1,11 +1,21 @@
 require("dotenv").config();
 
 const express = require("express");
+var bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+app.use(bodyParser.json({ limit: "300mb" }));
+app.use(
+  bodyParser.urlencoded({
+    limit: "300mb",
+    extended: true,
+    parameterLimit: 1000000,
+  })
+);
 
 const { graphqlHTTP } = require("express-graphql");
 const mongoose = require("mongoose");

@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 
 const ownerSchema = new Schema(
   {
+    username: String,
+    password: String,
     name: String,
     photo: String,
     address: String,

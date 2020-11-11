@@ -13,6 +13,7 @@ const {
   GraphQLID,
   GraphQLString,
   GraphQLFloat,
+  GraphQLNonNull,
 } = graphql;
 
 const GraphQLDateTime = require("graphql-type-datetime");
@@ -64,6 +65,8 @@ const OwnerType = new GraphQLObjectType({
   name: "Owner",
   fields: () => ({
     id: { type: GraphQLID },
+    username: { type: GraphQLString },
+    password: { type: GraphQLString },
     name: { type: GraphQLString },
     photo: { type: GraphQLString },
     address: { type: GraphQLString },
@@ -183,6 +186,39 @@ const RootQuery = new GraphQLObjectType({
   },
 });
 
+const Mutations = new GraphQLObjectType({
+  name: "Mutations",
+  fields: {
+    addOwner: {
+      type: OwnerType,
+      args: {
+        username: { type: new GraphQLNonNull(GraphQLString) },
+        password: { type: new GraphQLNonNull(GraphQLString) },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        photo: { type: new GraphQLNonNull(GraphQLString) },
+        address: { type: new GraphQLNonNull(GraphQLString) },
+        dob: { type: new GraphQLNonNull(GraphQLString) },
+        age: { type: new GraphQLNonNull(GraphQLFloat) },
+        phone: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      resolve(parent, args) {
+        let owner = new Owner({
+          username: args.username,
+          password: args.password,
+          name: args.name,
+          photo: args.photo,
+          address: args.address,
+          dob: args.dob,
+          age: args.age,
+          phone: args.phone,
+        });
+        return owner.save();
+      },
+    },
+  },
+});
+
 module.exports = new graphql.GraphQLSchema({
   query: RootQuery,
+  mutation: Mutations,
 });
