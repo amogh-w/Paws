@@ -218,6 +218,30 @@ const Mutations = new GraphQLObjectType({
         return owner.save();
       },
     },
+    addPet: {
+      type: PetType,
+      args: {
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        photo: { type: new GraphQLNonNull(GraphQLString) },
+        age: { type: new GraphQLNonNull(GraphQLFloat) },
+        breed: { type: new GraphQLNonNull(GraphQLString) },
+        height: { type: new GraphQLNonNull(GraphQLFloat) },
+        weight: { type: new GraphQLNonNull(GraphQLFloat) },
+        ownerId: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      resolve(parent, args) {
+        let pet = new Pet({
+          name: args.name,
+          photo: args.photo,
+          age: args.age,
+          breed: args.breed,
+          height: args.height,
+          weight: args.weight,
+          ownerId: args.ownerId,
+        });
+        return pet.save();
+      },
+    },
   },
 });
 

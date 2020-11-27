@@ -42,4 +42,43 @@ const ADD_OWNER = gql`
   }
 `;
 
-export { GET_OWNERS, ADD_OWNER };
+const GET_PETS = gql`
+  {
+    pets {
+      id
+      name
+      photo
+      age
+      breed
+      height
+      weight
+      ownerId
+    }
+  }
+`;
+
+const ADD_PET = gql`
+  mutation addPet(
+    $name: String!
+    $photo: String!
+    $age: Float!
+    $breed: String!
+    $height: Float!
+    $weight: Float!
+    $ownerId: String!
+  ) {
+    addPet(
+      name: $name
+      photo: $photo
+      age: $age
+      breed: $breed
+      height: $height
+      weight: $weight
+      ownerId: $ownerId
+    ) {
+      id
+    }
+  }
+`;
+
+export { GET_OWNERS, ADD_OWNER, GET_PETS, ADD_PET };

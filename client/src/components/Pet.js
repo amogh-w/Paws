@@ -1,18 +1,63 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Paper, Typography, TextField, Button } from "@material-ui/core";
+import FileUpload from "./FileUpload";
 
-const Pet = () => {
+import { ADD_PET } from "../queries/queries";
+import { useMutation } from "@apollo/client";
+
+const Pet = ({ ownerId, setShowAddPet }) => {
+  const [addPet, { data }] = useMutation(ADD_PET);
+
   const [values, setValues] = useState({
-    pet: "",
     name: "",
+    photo: "",
+    age: "",
     breed: "",
     height: "",
     weight: "",
   });
 
+  const [photoFile, photoFileHandle] = useState([]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
+  };
+
+  const handlePhotoFileChange = useCallback(
+    (e) => photoFileHandle(e.target.files[0]),
+    []
+  );
+
+  const toBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+
+  const attachPhoto = () => {
+    toBase64(photoFile).then((res) => {
+      console.log(res.length);
+      setValues({ ...values, photo: res });
+    });
+  };
+
+  const Submit = (e) => {
+    e.preventDefault();
+    addPet({
+      variables: {
+        name: values.name,
+        photo: values.photo,
+        age: parseFloat(values.age),
+        breed: values.breed,
+        height: parseFloat(values.height),
+        weight: parseFloat(values.weight),
+        ownerId: ownerId,
+      },
+    });
+    console.log(data);
   };
 
   return (
@@ -21,20 +66,27 @@ const Pet = () => {
         <div style={{ textAlign: "center" }}>
           <Typography variant="h5">Add your Pet</Typography>
           <TextField
-            name="pet"
-            value={values.pet}
+            name="name"
+            value={values.name}
             onChange={handleInputChange}
-            label="Pet"
+            label="Name"
             margin="normal"
             variant="outlined"
             rowsMax={4}
             style={{ width: "50vw" }}
           />
+          <FileUpload
+            file={photoFile}
+            handleFileChange={handlePhotoFileChange}
+          />
+          <Button variant="outlined" onClick={attachPhoto}>
+            Attach Photo
+          </Button>
           <TextField
-            name="name"
-            value={values.name}
+            name="age"
+            value={values.age}
             onChange={handleInputChange}
-            label="Name"
+            label="Age"
             margin="normal"
             variant="outlined"
             rowsMax={4}
@@ -71,12 +123,16 @@ const Pet = () => {
             style={{ width: "50vw" }}
           />
           <br />
+          <Button variant="contained" color="primary" onClick={Submit}>
+            Add
+          </Button>
           <Button
             variant="contained"
-            color="primary"
-            onClick={() => console.log(values)}
+            color="secondary"
+            onClick={() => setShowAddPet(false)}
+            style={{ marginLeft: "20px" }}
           >
-            Add
+            Cancel
           </Button>
         </div>
       </Paper>

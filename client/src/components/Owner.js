@@ -41,7 +41,11 @@ const Owner = () => {
       <Paper style={{ margin: "20px", padding: "20px" }}>
         {!loggedIn ? (
           <div>
-            <Login values={values} validateLogin={validateLogin} />
+            <Login
+              values={values}
+              setValues={setValues}
+              validateLogin={validateLogin}
+            />
             <Divider style={{ margin: "20px" }} />
             <div style={{ textAlign: "center" }}>
               {!showRegistration ? (
@@ -63,7 +67,7 @@ const Owner = () => {
             </div>
           </div>
         ) : (
-          <OwnerHome user={loggedInUser} />
+          <OwnerHome user={loggedInUser} setLoggedIn={setLoggedIn} />
         )}
       </Paper>
     </div>
