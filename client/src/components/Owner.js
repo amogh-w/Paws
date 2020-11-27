@@ -6,7 +6,6 @@ import OwnerRegister from "./OwnerRegister";
 import Login from "./Login";
 
 import { useQuery } from "@apollo/client";
-
 import { GET_OWNERS } from "../queries/queries";
 
 const Owner = () => {
