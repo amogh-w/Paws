@@ -119,7 +119,6 @@ const Navbar = ({ darkState, handleThemeChange }) => {
   };
 
   if (width >= 960 && width <= 1400) {
-    console.log(width);
     return (
       <>
         <AppBar
