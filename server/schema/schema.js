@@ -22,11 +22,8 @@ const AdminType = new GraphQLObjectType({
   name: "Admin",
   fields: () => ({
     id: { type: GraphQLID },
-    name: { type: GraphQLString },
-    photo: { type: GraphQLString },
-    address: { type: GraphQLString },
-    dob: { type: GraphQLString },
-    age: { type: GraphQLFloat },
+    username: { type: GraphQLString },
+    password: { type: GraphQLString },
   }),
 });
 
@@ -34,11 +31,10 @@ const AppointmentType = new GraphQLObjectType({
   name: "Appointment",
   fields: () => ({
     id: { type: GraphQLID },
-    time: { type: GraphQLDateTime },
-    ownerName: { type: GraphQLString },
-    doctorName: { type: GraphQLString },
-    petCategory: { type: GraphQLString },
-    petBreed: { type: GraphQLString },
+    date: { type: GraphQLDateTime },
+    ownerId: { type: GraphQLString },
+    doctorId: { type: GraphQLString },
+    petId: { type: GraphQLString },
     appointmentType: { type: GraphQLString },
     appointmentStatus: { type: GraphQLString },
   }),
@@ -48,6 +44,8 @@ const DoctorType = new GraphQLObjectType({
   name: "Doctor",
   fields: () => ({
     id: { type: GraphQLID },
+    username: { type: GraphQLString },
+    password: { type: GraphQLString },
     name: { type: GraphQLString },
     photo: { type: GraphQLString },
     address: { type: GraphQLString },
@@ -57,7 +55,6 @@ const DoctorType = new GraphQLObjectType({
     clinicAddress: { type: GraphQLString },
     clinicCity: { type: GraphQLString },
     experience: { type: GraphQLString },
-    expertise: { type: GraphQLString },
   }),
 });
 
@@ -73,6 +70,12 @@ const OwnerType = new GraphQLObjectType({
     dob: { type: GraphQLString },
     age: { type: GraphQLFloat },
     phone: { type: GraphQLString },
+    pets: {
+      type: GraphQLList(PetType),
+      resolve(parent, args) {
+        return Pet.find({ ownerId: parent.id });
+      },
+    },
   }),
 });
 
@@ -86,6 +89,7 @@ const PetType = new GraphQLObjectType({
     breed: { type: GraphQLString },
     height: { type: GraphQLFloat },
     weight: { type: GraphQLFloat },
+    ownerId: { type: GraphQLString },
   }),
 });
 
@@ -95,10 +99,9 @@ const ReviewType = new GraphQLObjectType({
     id: { type: GraphQLID },
     rating: { type: GraphQLFloat },
     feedback: { type: GraphQLString },
-    ownerName: { type: GraphQLString },
-    doctorName: { type: GraphQLString },
-    petCategory: { type: GraphQLString },
-    petBreed: { type: GraphQLString },
+    ownerId: { type: GraphQLString },
+    doctorId: { type: GraphQLString },
+    petId: { type: GraphQLString },
   }),
 });
 

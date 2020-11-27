@@ -4,11 +4,8 @@ const Schema = mongoose.Schema;
 
 const adminSchema = new Schema(
   {
-    name: String,
-    photo: String,
-    address: String,
-    dob: String,
-    age: Number,
+    username: String,
+    password: String,
   },
   { collection: "admins" }
 );

@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 
 const doctorSchema = new Schema(
   {
+    username: String,
+    password: String,
     name: String,
     photo: String,
     address: String,
@@ -13,7 +15,6 @@ const doctorSchema = new Schema(
     clinicAddress: String,
     clinicCity: String,
     experience: String,
-    expertise: String,
   },
   { collection: "doctors" }
 );

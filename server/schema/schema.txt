@@ -1,0 +1,62 @@
+Admin
+    id: { type: GraphQLID },
+    username: { type: GraphQLString },
+    password: { type: GraphQLString },
+
+Appointment
+    id: { type: GraphQLID },
+    date: { type: GraphQLDateTime },
+    ownerId: { type: GraphQLString },
+    doctorId: { type: GraphQLString },
+    petId: { type: GraphQLString },
+    appointmentType: { type: GraphQLString },
+    appointmentStatus: { type: GraphQLString }
+
+Doctor
+    id: { type: GraphQLID },
+    username: { type: GraphQLString },
+    password: { type: GraphQLString },
+    name: { type: GraphQLString },
+    photo: { type: GraphQLString },
+    address: { type: GraphQLString },
+    dob: { type: GraphQLString },
+    age: { type: GraphQLFloat },
+    phone: { type: GraphQLString },
+    clinicAddress: { type: GraphQLString },
+    clinicCity: { type: GraphQLString },
+    experience: { type: GraphQLString },
+
+Owner
+    id: { type: GraphQLID },
+    username: { type: GraphQLString },
+    password: { type: GraphQLString },
+    name: { type: GraphQLString },
+    photo: { type: GraphQLString },
+    address: { type: GraphQLString },
+    dob: { type: GraphQLString },
+    age: { type: GraphQLFloat },
+    phone: { type: GraphQLString },
+    pets: {
+      type: GraphQLList(PetType),
+      resolve(parent, args) {
+        return Pet.find({ ownerId: parent.id });
+      },
+    },
+
+Pet
+    id: { type: GraphQLID },
+    name: { type: GraphQLString },
+    photo: { type: GraphQLString },
+    age: { type: GraphQLFloat },
+    breed: { type: GraphQLString },
+    height: { type: GraphQLFloat },
+    weight: { type: GraphQLFloat },
+    ownerId: { type: GraphQLString },
+
+Review
+    id: { type: GraphQLID },
+    rating: { type: GraphQLFloat },
+    feedback: { type: GraphQLString },
+    ownerId: { type: GraphQLString },
+    doctorId: { type: GraphQLString },
+    petId: { type: GraphQLString }

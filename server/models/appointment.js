@@ -4,11 +4,10 @@ const Schema = mongoose.Schema;
 
 const appointmentSchema = new Schema(
   {
-    time: Date,
-    ownerName: String,
-    doctorName: String,
-    petCategory: String,
-    petBreed: String,
+    date: Date,
+    ownerId: String,
+    doctorId: String,
+    petId: String,
     appointmentType: String,
     appointmentStatus: String,
   },

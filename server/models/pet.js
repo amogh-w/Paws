@@ -10,6 +10,7 @@ const petSchema = new Schema(
     breed: String,
     height: Number,
     weight: Number,
+    ownerId: String,
   },
   { collection: "pets" }
 );

@@ -6,10 +6,9 @@ const reviewSchema = new Schema(
   {
     rating: Number,
     feedback: String,
-    ownerName: String,
-    doctorName: String,
-    petCategory: String,
-    petBreed: String,
+    ownerId: String,
+    doctorId: String,
+    petId: String,
   },
   { collection: "reviews" }
 );
