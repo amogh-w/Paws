@@ -169,8 +169,13 @@ const RootQuery = new GraphQLObjectType({
     },
     pets: {
       type: GraphQLList(PetType),
+      args: { ownerId: { type: GraphQLString } },
       resolve(parent, args) {
-        return Pet.find({});
+        if (Object.keys(args).length === 0 && args.constructor === Object) {
+          return Pet.find({});
+        } else if ("ownerId" in args) {
+          return Pet.find({ ownerId: args.ownerId });
+        }
       },
     },
     review: {
@@ -240,6 +245,38 @@ const Mutations = new GraphQLObjectType({
           ownerId: args.ownerId,
         });
         return pet.save();
+      },
+    },
+    addDoctor: {
+      type: DoctorType,
+      args: {
+        username: { type: new GraphQLNonNull(GraphQLString) },
+        password: { type: new GraphQLNonNull(GraphQLString) },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        photo: { type: new GraphQLNonNull(GraphQLString) },
+        address: { type: new GraphQLNonNull(GraphQLString) },
+        dob: { type: new GraphQLNonNull(GraphQLString) },
+        age: { type: new GraphQLNonNull(GraphQLFloat) },
+        phone: { type: new GraphQLNonNull(GraphQLString) },
+        clinicAddress: { type: new GraphQLNonNull(GraphQLString) },
+        clinicCity: { type: new GraphQLNonNull(GraphQLString) },
+        experience: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      resolve(parent, args) {
+        let doctor = new Doctor({
+          username: args.username,
+          password: args.password,
+          name: args.name,
+          photo: args.photo,
+          address: args.address,
+          dob: args.dob,
+          age: args.age,
+          phone: args.phone,
+          clinicAddress: args.clinicAddress,
+          clinicCity: args.clinicCity,
+          experience: args.experience,
+        });
+        return doctor.save();
       },
     },
   },

@@ -13,20 +13,42 @@ import {
 import Pet from "./Pet";
 
 import { useQuery } from "@apollo/client";
-import { GET_PETS } from "../queries/queries";
+import { GET_PETS_OWNER } from "../queries/queries";
+
+const ShowPetTable = ({ loading, error, data }) => {
+  if (loading) return <Typography>Loading ...</Typography>;
+  if (error) return <Typography>Error ...</Typography>;
+  return (
+    <TableBody>
+      {data.pets.map((row) => (
+        <TableRow key={row.pet}>
+          <TableCell component="th" scope="row">
+            {row.name}
+          </TableCell>
+          <TableCell>
+            <img src={row.photo} alt="pet-face" style={{ width: "5vw" }} />
+          </TableCell>
+          <TableCell>{row.age} years</TableCell>
+          <TableCell>{row.breed}</TableCell>
+          <TableCell>{row.height} cm</TableCell>
+          <TableCell>{row.weight} cm</TableCell>
+          <TableCell>
+            <Button variant="outlined" color="primary">
+              Edit
+            </Button>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  );
+};
 
 const OwnerHome = ({ user, setLoggedIn }) => {
   const [showAddPet, setShowAddPet] = useState(false);
 
-  const { data } = useQuery(GET_PETS);
-
-  let pets;
-
-  if (data) {
-    pets = data.pets.filter(function (e) {
-      return e.ownerId === user.id;
-    });
-  }
+  const { loading, error, data } = useQuery(GET_PETS_OWNER, {
+    variables: { ownerId: user.id },
+  });
 
   return (
     <div>
@@ -82,31 +104,7 @@ const OwnerHome = ({ user, setLoggedIn }) => {
               <TableCell>Weight</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {pets.map((row) => (
-              <TableRow key={row.pet}>
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell>
-                  <img
-                    src={row.photo}
-                    alt="pet-image"
-                    style={{ width: "5vw" }}
-                  />
-                </TableCell>
-                <TableCell>{row.age} years</TableCell>
-                <TableCell>{row.breed}</TableCell>
-                <TableCell>{row.height} cm</TableCell>
-                <TableCell>{row.weight} cm</TableCell>
-                <TableCell>
-                  <Button variant="outlined" color="primary">
-                    Edit
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
+          <ShowPetTable loading={loading} error={error} data={data} />
         </Table>
       </TableContainer>
     </div>

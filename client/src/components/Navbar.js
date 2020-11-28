@@ -149,7 +149,7 @@ const Navbar = ({ darkState, handleThemeChange }) => {
                 style={{ width: "50px", marginRight: "20px" }}
                 alt="logo"
               />
-            </Typography>{" "}
+            </Typography>
             <Button
               color="primary"
               variant="contained"
@@ -360,7 +360,7 @@ const Navbar = ({ darkState, handleThemeChange }) => {
                 style={{ width: "50px", marginRight: "20px" }}
                 alt="logo"
               />
-            </Typography>{" "}
+            </Typography>
             <Button
               color="primary"
               variant="contained"

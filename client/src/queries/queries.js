@@ -57,6 +57,21 @@ const GET_PETS = gql`
   }
 `;
 
+const GET_PETS_OWNER = gql`
+  query pets($ownerId: String!) {
+    pets(ownerId: $ownerId) {
+      id
+      name
+      photo
+      age
+      breed
+      height
+      weight
+      ownerId
+    }
+  }
+`;
+
 const ADD_PET = gql`
   mutation addPet(
     $name: String!
@@ -81,4 +96,63 @@ const ADD_PET = gql`
   }
 `;
 
-export { GET_OWNERS, ADD_OWNER, GET_PETS, ADD_PET };
+const GET_DOCTORS = gql`
+  {
+    doctors {
+      id
+      username
+      password
+      name
+      photo
+      address
+      dob
+      age
+      phone
+      clinicAddress
+      clinicCity
+      experience
+    }
+  }
+`;
+
+const ADD_DOCTOR = gql`
+  mutation addDoctor(
+    $username: String!
+    $password: String!
+    $name: String!
+    $photo: String!
+    $address: String!
+    $dob: String!
+    $age: Float!
+    $phone: String!
+    $clinicAddress: String!
+    $clinicCity: String!
+    $experience: String!
+  ) {
+    addDoctor(
+      username: $username
+      password: $password
+      name: $name
+      photo: $photo
+      address: $address
+      dob: $dob
+      age: $age
+      phone: $phone
+      clinicAddress: $clinicAddress
+      clinicCity: $clinicCity
+      experience: $experience
+    ) {
+      id
+    }
+  }
+`;
+
+export {
+  GET_OWNERS,
+  ADD_OWNER,
+  GET_PETS,
+  ADD_PET,
+  GET_PETS_OWNER,
+  GET_DOCTORS,
+  ADD_DOCTOR,
+};

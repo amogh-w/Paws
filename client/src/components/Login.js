@@ -10,7 +10,7 @@ const Login = ({ values, setValues, validateLogin }) => {
   return (
     <div>
       <div style={{ textAlign: "center" }}>
-        <Typography variant="h5">Owner Login</Typography>
+        <Typography variant="h5">Login</Typography>
         <TextField
           name="username"
           value={values.username}
