@@ -147,6 +147,30 @@ const ADD_DOCTOR = gql`
   }
 `;
 
+const GET_ADMINS = gql`
+  {
+    admins {
+      id
+      username
+      password
+    }
+  }
+`;
+
+const ADD_ADMIN = gql`
+  mutation addAdmin(
+    $username: String!
+    $password: String!
+  ) {
+    addAdmin(
+      username: $username
+      password: $password
+    ) {
+      id
+    }
+  }
+`;
+
 export {
   GET_OWNERS,
   ADD_OWNER,
@@ -155,4 +179,6 @@ export {
   GET_PETS_OWNER,
   GET_DOCTORS,
   ADD_DOCTOR,
+  GET_ADMINS,
+  ADD_ADMIN
 };

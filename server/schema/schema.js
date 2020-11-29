@@ -279,6 +279,20 @@ const Mutations = new GraphQLObjectType({
         return doctor.save();
       },
     },
+    addAdmin: {
+      type: AdminType,
+      args: {
+        username: { type: new GraphQLNonNull(GraphQLString) },
+        password: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      resolve(parent, args) {
+        let admin = new Admin({
+          username: args.username,
+          password: args.password,
+        });
+        return admin.save();
+      },
+    },
   },
 });
 
