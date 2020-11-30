@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   Typography,
@@ -13,7 +12,9 @@ import {
 } from "@material-ui/core";
 
 import { useQuery } from "@apollo/client";
-import { GET_DOCTORS, GET_OWNERS } from "../queries/queries";
+import { GET_DOCTORS, GET_OWNERS, GET_APPOINTMENTS } from "../queries/queries";
+
+import AppointmentTable from "./AppointmentTable";
 
 const ShowDoctorTable = ({ loading, error, data }) => {
   if (loading) return <Typography>Loading ...</Typography>;
@@ -47,41 +48,48 @@ const ShowDoctorTable = ({ loading, error, data }) => {
 };
 
 const ShowOwnerTable = ({ loading, error, data }) => {
-    if (loading) return <Typography>Loading ...</Typography>;
-    if (error) return <Typography>Error ...</Typography>;
-    return (
-      <TableBody>
-        {data.owners.map((row) => (
-          <TableRow key={row.pet}>
-            <TableCell component="th" scope="row">
-              {row.name}
-            </TableCell>
-            <TableCell>
-              <img src={row.photo} alt="pet-face" style={{ width: "5vw" }} />
-            </TableCell>
-            <TableCell>{row.address}</TableCell>
-            <TableCell>{row.dob}</TableCell>
-            <TableCell>{row.age} years</TableCell>
-            <TableCell>{row.phone}</TableCell>
-            <TableCell>
-              <Button variant="outlined" color="primary">
-                Edit
-              </Button>
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    );
-  };
+  if (loading) return <Typography>Loading ...</Typography>;
+  if (error) return <Typography>Error ...</Typography>;
+  return (
+    <TableBody>
+      {data.owners.map((row) => (
+        <TableRow key={row.pet}>
+          <TableCell component="th" scope="row">
+            {row.name}
+          </TableCell>
+          <TableCell>
+            <img src={row.photo} alt="pet-face" style={{ width: "5vw" }} />
+          </TableCell>
+          <TableCell>{row.address}</TableCell>
+          <TableCell>{row.dob}</TableCell>
+          <TableCell>{row.age} years</TableCell>
+          <TableCell>{row.phone}</TableCell>
+          <TableCell>
+            <Button variant="outlined" color="primary">
+              Edit
+            </Button>
+          </TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  );
+};
 
 const AdminHome = ({ user, setLoggedIn }) => {
   const { loading, error, data } = useQuery(GET_DOCTORS, {
     variables: { ownerId: user.id },
   });
 
-  const { loading: loading2, error: error2, data: data2 } = useQuery(GET_OWNERS, {
-    variables: { ownerId: user.id },
-  });
+  const { loading: loading2, error: error2, data: data2 } = useQuery(
+    GET_OWNERS,
+    {
+      variables: { ownerId: user.id },
+    }
+  );
+
+  const { loading: loading3, error: error3, data: data3 } = useQuery(
+    GET_APPOINTMENTS
+  );
 
   return (
     <div>
@@ -140,6 +148,12 @@ const AdminHome = ({ user, setLoggedIn }) => {
           <ShowOwnerTable loading={loading2} error={error2} data={data2} />
         </Table>
       </TableContainer>
+      <br />
+      <div style={{ textAlign: "center" }}>
+        <Typography variant="h5">Appointment Database</Typography>
+      </div>
+      <br />
+      <AppointmentTable loading={loading3} error={error3} data={data3} />
     </div>
   );
 };
