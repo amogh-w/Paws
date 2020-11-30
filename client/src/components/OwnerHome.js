@@ -12,9 +12,10 @@ import {
 } from "@material-ui/core";
 import Pet from "./Pet";
 import OwnerAppointment from "./OwnerAppointment";
+import AppointmentTable from "./AppointmentTable";
 
 import { useQuery } from "@apollo/client";
-import { GET_PETS_OWNER } from "../queries/queries";
+import { GET_PETS_OWNER, GET_APPOINTMENTS_OWNER } from "../queries/queries";
 
 const ShowPetTable = ({ loading, error, data }) => {
   if (loading) return <Typography>Loading ...</Typography>;
@@ -52,6 +53,13 @@ const OwnerHome = ({ user, setLoggedIn }) => {
     variables: { ownerId: user.id },
   });
 
+  const { loading: loading2, error: error2, data: data2 } = useQuery(
+    GET_APPOINTMENTS_OWNER,
+    {
+      variables: { ownerId: user.id },
+    }
+  );
+
   return (
     <div>
       <div style={{ textAlign: "center" }}>
@@ -83,7 +91,6 @@ const OwnerHome = ({ user, setLoggedIn }) => {
           Sign Out
         </Button>
       </div>
-
       {showAddPet ? (
         <Pet ownerId={user.id} setShowAddPet={setShowAddPet} />
       ) : (
@@ -117,6 +124,11 @@ const OwnerHome = ({ user, setLoggedIn }) => {
           <ShowPetTable loading={loading} error={error} data={data} />
         </Table>
       </TableContainer>
+      <br />
+      <div style={{ textAlign: "center" }}>
+        <Typography variant="h5">Your Appointments</Typography>
+      </div>
+      <AppointmentTable loading={loading2} error={error2} data={data2} />
     </div>
   );
 };

@@ -130,8 +130,18 @@ const RootQuery = new GraphQLObjectType({
     },
     appointments: {
       type: GraphQLList(AppointmentType),
+      args: {
+        ownerId: { type: GraphQLString },
+        doctorId: { type: GraphQLString },
+      },
       resolve(parent, args) {
-        return Appointment.find({});
+        if (Object.keys(args).length === 0 && args.constructor === Object) {
+          return Appointment.find({});
+        } else if ("ownerId" in args) {
+          return Appointment.find({ ownerId: args.ownerId });
+        } else if ("doctorId" in args) {
+          return Appointment.find({ doctorId: args.doctorId });
+        }
       },
     },
     doctor: {

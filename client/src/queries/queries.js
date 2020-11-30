@@ -201,6 +201,34 @@ const ADD_APPOINTMENT = gql`
   }
 `;
 
+const GET_APPOINTMENTS_OWNER = gql`
+  query appointments($ownerId: String!) {
+    appointments(ownerId: $ownerId) {
+      id
+      date
+      ownerId
+      doctorId
+      petId
+      appointmentType
+      appointmentStatus
+    }
+  }
+`;
+
+const GET_APPOINTMENTS_DOCTOR = gql`
+  query appointments($doctorId: String!) {
+    appointments(doctorId: $doctorId) {
+      id
+      date
+      ownerId
+      doctorId
+      petId
+      appointmentType
+      appointmentStatus
+    }
+  }
+`;
+
 export {
   GET_OWNERS,
   ADD_OWNER,
@@ -213,4 +241,6 @@ export {
   ADD_ADMIN,
   GET_APPOINTMENTS,
   ADD_APPOINTMENT,
+  GET_APPOINTMENTS_OWNER,
+  GET_APPOINTMENTS_DOCTOR,
 };

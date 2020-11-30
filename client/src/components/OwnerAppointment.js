@@ -12,7 +12,11 @@ import {
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-import { GET_DOCTORS, GET_PETS, ADD_APPOINTMENT } from "../queries/queries";
+import {
+  GET_DOCTORS,
+  GET_PETS_OWNER,
+  ADD_APPOINTMENT,
+} from "../queries/queries";
 import { useMutation, useQuery } from "@apollo/client";
 
 const OwnerAppointment = ({ ownerId, setShowAddAppointment }) => {
@@ -53,7 +57,10 @@ const OwnerAppointment = ({ ownerId, setShowAddAppointment }) => {
   );
 
   const { loading: loadingPet, error: errorPet, data: dataPet } = useQuery(
-    GET_PETS
+    GET_PETS_OWNER,
+    {
+      variables: { ownerId: ownerId },
+    }
   );
 
   const setStartDate = (date0) => {
