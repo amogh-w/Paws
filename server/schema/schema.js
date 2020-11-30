@@ -293,6 +293,28 @@ const Mutations = new GraphQLObjectType({
         return admin.save();
       },
     },
+    addAppointment: {
+      type: AppointmentType,
+      args: {
+        date: { type: new GraphQLNonNull(GraphQLString) },
+        ownerId: { type: new GraphQLNonNull(GraphQLString) },
+        doctorId: { type: new GraphQLNonNull(GraphQLString) },
+        petId: { type: new GraphQLNonNull(GraphQLString) },
+        appointmentType: { type: new GraphQLNonNull(GraphQLString) },
+        appointmentStatus: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      resolve(parent, args) {
+        let appointment = new Appointment({
+          date: args.date,
+          ownerId: args.ownerId,
+          doctorId: args.doctorId,
+          petId: args.petId,
+          appointmentType: args.appointmentType,
+          appointmentStatus: args.appointmentStatus,
+        });
+        return appointment.save();
+      },
+    },
   },
 });
 

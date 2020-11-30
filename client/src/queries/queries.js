@@ -158,13 +158,43 @@ const GET_ADMINS = gql`
 `;
 
 const ADD_ADMIN = gql`
-  mutation addAdmin(
-    $username: String!
-    $password: String!
+  mutation addAdmin($username: String!, $password: String!) {
+    addAdmin(username: $username, password: $password) {
+      id
+    }
+  }
+`;
+
+const GET_APPOINTMENTS = gql`
+  {
+    appointments {
+      id
+      date
+      ownerId
+      doctorId
+      petId
+      appointmentType
+      appointmentStatus
+    }
+  }
+`;
+
+const ADD_APPOINTMENT = gql`
+  mutation addAppointment(
+    $date: String!
+    $ownerId: String!
+    $doctorId: String!
+    $petId: String!
+    $appointmentType: String!
+    $appointmentStatus: String!
   ) {
-    addAdmin(
-      username: $username
-      password: $password
+    addAppointment(
+      date: $date
+      ownerId: $ownerId
+      doctorId: $doctorId
+      petId: $petId
+      appointmentType: $appointmentType
+      appointmentStatus: $appointmentStatus
     ) {
       id
     }
@@ -180,5 +210,7 @@ export {
   GET_DOCTORS,
   ADD_DOCTOR,
   GET_ADMINS,
-  ADD_ADMIN
+  ADD_ADMIN,
+  GET_APPOINTMENTS,
+  ADD_APPOINTMENT,
 };

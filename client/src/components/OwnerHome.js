@@ -11,6 +11,7 @@ import {
   Paper,
 } from "@material-ui/core";
 import Pet from "./Pet";
+import OwnerAppointment from "./OwnerAppointment";
 
 import { useQuery } from "@apollo/client";
 import { GET_PETS_OWNER } from "../queries/queries";
@@ -45,6 +46,7 @@ const ShowPetTable = ({ loading, error, data }) => {
 
 const OwnerHome = ({ user, setLoggedIn }) => {
   const [showAddPet, setShowAddPet] = useState(false);
+  const [showAddAppointment, setShowAddAppointment] = useState(false);
 
   const { loading, error, data } = useQuery(GET_PETS_OWNER, {
     variables: { ownerId: user.id },
@@ -60,7 +62,7 @@ const OwnerHome = ({ user, setLoggedIn }) => {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => console.log("Schedule Appointment")}
+          onClick={() => setShowAddAppointment(true)}
           style={{ marginRight: "20px" }}
         >
           Schedule Appointment
@@ -84,6 +86,14 @@ const OwnerHome = ({ user, setLoggedIn }) => {
 
       {showAddPet ? (
         <Pet ownerId={user.id} setShowAddPet={setShowAddPet} />
+      ) : (
+        <div></div>
+      )}
+      {showAddAppointment ? (
+        <OwnerAppointment
+          ownerId={user.id}
+          setShowAddAppointment={setShowAddAppointment}
+        />
       ) : (
         <div></div>
       )}
