@@ -229,6 +229,26 @@ const GET_APPOINTMENTS_DOCTOR = gql`
   }
 `;
 
+const ADD_REVIEW = gql`
+  mutation addReview(
+    $rating: Float!
+    $feedback: String!
+    $ownerId: String!
+    $doctorId: String!
+    $petId: String!
+  ) {
+    addReview(
+      rating: $rating
+      feedback: $feedback
+      ownerId: $ownerId
+      doctorId: $doctorId
+      petId: $petId
+    ) {
+      id
+    }
+  }
+`;
+
 export {
   GET_OWNERS,
   ADD_OWNER,
@@ -243,4 +263,5 @@ export {
   ADD_APPOINTMENT,
   GET_APPOINTMENTS_OWNER,
   GET_APPOINTMENTS_DOCTOR,
+  ADD_REVIEW,
 };

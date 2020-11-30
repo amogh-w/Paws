@@ -325,6 +325,26 @@ const Mutations = new GraphQLObjectType({
         return appointment.save();
       },
     },
+    addReview: {
+      type: ReviewType,
+      args: {
+        rating: { type: new GraphQLNonNull(GraphQLFloat) },
+        feedback: { type: new GraphQLNonNull(GraphQLString) },
+        ownerId: { type: new GraphQLNonNull(GraphQLString) },
+        doctorId: { type: new GraphQLNonNull(GraphQLString) },
+        petId: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      resolve(parent, args) {
+        let review = new Review({
+          rating: args.rating,
+          feedback: args.feedback,
+          ownerId: args.ownerId,
+          doctorId: args.doctorId,
+          petId: args.petId,
+        });
+        return review.save();
+      },
+    },
   },
 });
 
