@@ -62,7 +62,7 @@ const Landing = () => {
           >
             Doctor
           </Button>
-          <Button
+          {/* <Button
             to="/parlour"
             color="primary"
             variant="contained"
@@ -70,7 +70,7 @@ const Landing = () => {
             style={{ width: "20%", margin: "10px" }}
           >
             Parlour
-          </Button>
+          </Button> */}
           <Button
             to="/admin"
             color="primary"

@@ -185,12 +185,12 @@ const Navbar = ({ darkState, handleThemeChange }) => {
               </ListItemIcon>
               <ListItemText>Admin</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/appointment">
+            {/* <ListItem button component={Link} to="/appointment">
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Appointment</ListItemText>
-            </ListItem>
+            </ListItem> */}
             <ListItem button component={Link} to="/doctor">
               <ListItemIcon>
                 <DashboardIcon />
@@ -203,7 +203,7 @@ const Navbar = ({ darkState, handleThemeChange }) => {
               </ListItemIcon>
               <ListItemText>Owner</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/pet">
+            {/* <ListItem button component={Link} to="/pet">
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
@@ -214,7 +214,7 @@ const Navbar = ({ darkState, handleThemeChange }) => {
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Review</ListItemText>
-            </ListItem>
+            </ListItem> */}
           </List>
           <Divider />
         </Drawer>
@@ -296,12 +296,12 @@ const Navbar = ({ darkState, handleThemeChange }) => {
               </ListItemIcon>
               <ListItemText>Admin</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/appointment">
+            {/* <ListItem button component={Link} to="/appointment">
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Appointment</ListItemText>
-            </ListItem>
+            </ListItem> */}
             <ListItem button component={Link} to="/doctor">
               <ListItemIcon>
                 <DashboardIcon />
@@ -314,7 +314,7 @@ const Navbar = ({ darkState, handleThemeChange }) => {
               </ListItemIcon>
               <ListItemText>Owner</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/pet">
+            {/* <ListItem button component={Link} to="/pet">
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
@@ -325,7 +325,7 @@ const Navbar = ({ darkState, handleThemeChange }) => {
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Review</ListItemText>
-            </ListItem>
+            </ListItem> */}
           </List>
           <Divider />
         </Drawer>
@@ -396,12 +396,12 @@ const Navbar = ({ darkState, handleThemeChange }) => {
               </ListItemIcon>
               <ListItemText>Admin</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/appointment">
+            {/* <ListItem button component={Link} to="/appointment">
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Appointment</ListItemText>
-            </ListItem>
+            </ListItem> */}
             <ListItem button component={Link} to="/doctor">
               <ListItemIcon>
                 <DashboardIcon />
@@ -414,7 +414,7 @@ const Navbar = ({ darkState, handleThemeChange }) => {
               </ListItemIcon>
               <ListItemText>Owner</ListItemText>
             </ListItem>
-            <ListItem button component={Link} to="/pet">
+            {/* <ListItem button component={Link} to="/pet">
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
@@ -425,7 +425,7 @@ const Navbar = ({ darkState, handleThemeChange }) => {
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Review</ListItemText>
-            </ListItem>
+            </ListItem> */}
           </List>
           <Divider />
         </Drawer>
