@@ -14,9 +14,14 @@ import Pet from "./Pet";
 import OwnerAppointment from "./OwnerAppointment";
 import AppointmentTable from "./AppointmentTable";
 import OwnerReview from "./OwnerReview";
+import ReviewTable from "./ReviewTable";
 
 import { useQuery } from "@apollo/client";
-import { GET_PETS_OWNER, GET_APPOINTMENTS_OWNER } from "../queries/queries";
+import {
+  GET_PETS_OWNER,
+  GET_APPOINTMENTS_OWNER,
+  GET_REVIEWS,
+} from "../queries/queries";
 
 const ShowPetTable = ({ loading, error, data }) => {
   if (loading) return <Typography>Loading ...</Typography>;
@@ -57,6 +62,13 @@ const OwnerHome = ({ user, setLoggedIn }) => {
 
   const { loading: loading2, error: error2, data: data2 } = useQuery(
     GET_APPOINTMENTS_OWNER,
+    {
+      variables: { ownerId: user.id },
+    }
+  );
+
+  const { loading: loading3, error: error3, data: data3 } = useQuery(
+    GET_REVIEWS,
     {
       variables: { ownerId: user.id },
     }
@@ -141,6 +153,12 @@ const OwnerHome = ({ user, setLoggedIn }) => {
         Add Reviews
       </Button>
       {showAddReview ? <OwnerReview ownerId={user.id} /> : <div></div>}
+      <br />
+      <div style={{ textAlign: "center" }}>
+        <Typography variant="h5">Your Reviews</Typography>
+      </div>
+      <br />
+      <ReviewTable loading={loading3} error={error3} data={data3} />
     </div>
   );
 };

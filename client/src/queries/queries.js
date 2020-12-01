@@ -249,6 +249,19 @@ const ADD_REVIEW = gql`
   }
 `;
 
+const GET_REVIEWS = gql`
+  {
+    reviews {
+      id
+      rating
+      feedback
+      ownerId
+      doctorId
+      petId
+    }
+  }
+`;
+
 export {
   GET_OWNERS,
   ADD_OWNER,
@@ -264,4 +277,5 @@ export {
   GET_APPOINTMENTS_OWNER,
   GET_APPOINTMENTS_DOCTOR,
   ADD_REVIEW,
+  GET_REVIEWS,
 };

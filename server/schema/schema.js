@@ -197,8 +197,18 @@ const RootQuery = new GraphQLObjectType({
     },
     reviews: {
       type: GraphQLList(ReviewType),
+      args: {
+        ownerId: { type: GraphQLString },
+        doctorId: { type: GraphQLString },
+      },
       resolve(parent, args) {
-        return Review.find({});
+        if (Object.keys(args).length === 0 && args.constructor === Object) {
+          return Review.find({});
+        } else if ("ownerId" in args) {
+          return Review.find({ ownerId: args.ownerId });
+        } else if ("doctorId" in args) {
+          return Review.find({ doctorId: args.doctorId });
+        }
       },
     },
   },

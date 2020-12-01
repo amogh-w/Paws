@@ -12,9 +12,15 @@ import {
 } from "@material-ui/core";
 
 import { useQuery } from "@apollo/client";
-import { GET_DOCTORS, GET_OWNERS, GET_APPOINTMENTS } from "../queries/queries";
+import {
+  GET_DOCTORS,
+  GET_OWNERS,
+  GET_APPOINTMENTS,
+  GET_REVIEWS,
+} from "../queries/queries";
 
 import AppointmentTable from "./AppointmentTable";
+import ReviewTable from "./ReviewTable";
 
 const ShowDoctorTable = ({ loading, error, data }) => {
   if (loading) return <Typography>Loading ...</Typography>;
@@ -91,6 +97,10 @@ const AdminHome = ({ user, setLoggedIn }) => {
     GET_APPOINTMENTS
   );
 
+  const { loading: loading4, error: error4, data: data4 } = useQuery(
+    GET_REVIEWS
+  );
+
   return (
     <div>
       <div style={{ textAlign: "center" }}>
@@ -154,6 +164,12 @@ const AdminHome = ({ user, setLoggedIn }) => {
       </div>
       <br />
       <AppointmentTable loading={loading3} error={error3} data={data3} />
+      <br />
+      <div style={{ textAlign: "center" }}>
+        <Typography variant="h5">Review Database</Typography>
+      </div>
+      <br />
+      <ReviewTable loading={loading4} error={error4} data={data4} />
     </div>
   );
 };
