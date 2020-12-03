@@ -37,11 +37,11 @@ const ReviewTable = ({ loading, error, data }) => {
                 <TableCell>{row.ownerId}</TableCell>
                 <TableCell>{row.doctorId}</TableCell>
                 <TableCell>{row.petId}</TableCell>
-                <TableCell>
+                {/* <TableCell>
                   <Button variant="outlined" color="primary">
                     Edit
                   </Button>
-                </TableCell>
+                </TableCell> */}
               </TableRow>
             ))}
           </TableBody>

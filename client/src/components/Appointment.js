@@ -57,14 +57,14 @@ const Appointment = () => {
               <b>Time:</b> 4:00 pm
             </Typography>
             <br />
-            <Button
+            {/* <Button
               variant="contained"
               color="primary"
               onClick={() => setAppointmentFound(false)}
               style={{ marginRight: "20px" }}
             >
               Edit
-            </Button>
+            </Button> */}
             <Button
               variant="contained"
               color="primary"

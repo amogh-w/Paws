@@ -42,11 +42,11 @@ const ShowDoctorTable = ({ loading, error, data }) => {
           <TableCell>{row.clinicAddress}</TableCell>
           <TableCell>{row.clinicCity}</TableCell>
           <TableCell>{row.experience}</TableCell>
-          <TableCell>
+          {/* <TableCell>
             <Button variant="outlined" color="primary">
               Edit
             </Button>
-          </TableCell>
+          </TableCell> */}
         </TableRow>
       ))}
     </TableBody>
@@ -70,11 +70,11 @@ const ShowOwnerTable = ({ loading, error, data }) => {
           <TableCell>{row.dob}</TableCell>
           <TableCell>{row.age} years</TableCell>
           <TableCell>{row.phone}</TableCell>
-          <TableCell>
+          {/* <TableCell>
             <Button variant="outlined" color="primary">
               Edit
             </Button>
-          </TableCell>
+          </TableCell> */}
         </TableRow>
       ))}
     </TableBody>

@@ -39,11 +39,11 @@ const AppointmentTable = ({ loading, error, data }) => {
                 <TableCell>{row.petId}</TableCell>
                 <TableCell>{row.appointmentType}</TableCell>
                 <TableCell>{row.appointmentStatus}</TableCell>
-                <TableCell>
+                {/* <TableCell>
                   <Button variant="outlined" color="primary">
                     Edit
                   </Button>
-                </TableCell>
+                </TableCell> */}
               </TableRow>
             ))}
           </TableBody>

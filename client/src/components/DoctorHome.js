@@ -26,14 +26,14 @@ const DoctorHome = ({ user, setLoggedIn }) => {
         <Typography variant="h4">{user.name}</Typography>
       </div>
       <div style={{ textAlign: "center" }}>
-        <Button
+        {/* <Button
           variant="contained"
           color="primary"
           onClick={() => console.log("Schedule Appointment")}
           style={{ marginRight: "20px" }}
         >
           Schedule Appointment
-        </Button>
+        </Button> */}
         <Button
           variant="contained"
           color="primary"

@@ -39,12 +39,12 @@ const ShowPetTable = ({ loading, error, data }) => {
           <TableCell>{row.age} years</TableCell>
           <TableCell>{row.breed}</TableCell>
           <TableCell>{row.height} cm</TableCell>
-          <TableCell>{row.weight} cm</TableCell>
-          <TableCell>
+          <TableCell>{row.weight} kg</TableCell>
+          {/* <TableCell>
             <Button variant="outlined" color="primary">
               Edit
             </Button>
-          </TableCell>
+          </TableCell> */}
         </TableRow>
       ))}
     </TableBody>
