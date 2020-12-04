@@ -4,7 +4,10 @@ import ReviewTable from "./ReviewTable";
 
 import { useQuery } from "@apollo/client";
 
-import { GET_APPOINTMENTS_DOCTOR, GET_REVIEWS } from "../queries/queries";
+import {
+  GET_APPOINTMENTS_DOCTOR,
+  GET_REVIEWS_DOCTOR,
+} from "../queries/queries";
 import AppointmentTable from "./AppointmentTable";
 
 const DoctorHome = ({ user, setLoggedIn }) => {
@@ -12,10 +15,12 @@ const DoctorHome = ({ user, setLoggedIn }) => {
     variables: { doctorId: user.id },
   });
 
+  console.log(user);
+
   const { loading: loading3, error: error3, data: data3 } = useQuery(
-    GET_REVIEWS,
+    GET_REVIEWS_DOCTOR,
     {
-      variables: { doctorId: user.doctorId },
+      variables: { doctorId: user.id },
     }
   );
 

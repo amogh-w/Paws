@@ -7,6 +7,7 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  TextField,
 } from "@material-ui/core";
 
 import DatePicker from "react-datepicker";
@@ -29,6 +30,7 @@ const OwnerAppointment = ({ ownerId, setShowAddAppointment }) => {
     petId: "",
     appointmentType: "",
     appointmentStatus: "Processing",
+    city: "",
   });
 
   const handleInputChange = (e) => {
@@ -71,6 +73,16 @@ const OwnerAppointment = ({ ownerId, setShowAddAppointment }) => {
     if (loadingDoc) return <Typography>Loading ...</Typography>;
     if (errorDoc) return <Typography>Error ...</Typography>;
     console.log(dataDoc.doctors);
+
+    var bruh = [];
+
+    dataDoc.doctors.forEach((doctor) => {
+      console.log(doctor);
+      if (doctor.clinicCity === values.city) {
+        bruh.push(doctor);
+      }
+    });
+
     return (
       <FormControl>
         <InputLabel>Doctor</InputLabel>
@@ -81,7 +93,7 @@ const OwnerAppointment = ({ ownerId, setShowAddAppointment }) => {
           variant="outlined"
           style={{ width: "50vw", marginBottom: "16px" }}
         >
-          {dataDoc.doctors.map((doc) => {
+          {bruh.map((doc) => {
             return (
               <MenuItem value={doc.id}>
                 <img
@@ -90,6 +102,7 @@ const OwnerAppointment = ({ ownerId, setShowAddAppointment }) => {
                   alt="Profile"
                 />
                 {doc.name}, <b>Clinic Location:</b> {doc.clinicAddress}
+                <br />
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15282225.79979123!2d73.7250245393691!3d20.750301298393563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791%3A0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sin!4v1587818542745!5m2!1sen!2sin"
                   width="300"
@@ -144,6 +157,16 @@ const OwnerAppointment = ({ ownerId, setShowAddAppointment }) => {
       <Paper style={{ margin: "20px", padding: "20px" }}>
         <div style={{ textAlign: "center" }}>
           <Typography variant="h5">Schedule your Appointment</Typography>
+          <TextField
+            name="city"
+            value={values.city}
+            onChange={handleInputChange}
+            label="City To Search"
+            margin="normal"
+            variant="outlined"
+            rowsMax={4}
+            style={{ width: "50vw" }}
+          />
           <DocSelect
             loadingDoc={loadingDoc}
             errorDoc={errorDoc}

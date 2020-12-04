@@ -305,6 +305,26 @@ const GET_REVIEWS = gql`
   }
 `;
 
+const GET_REVIEWS_DOCTOR = gql`
+  query reviews($doctorId: String!) {
+    reviews(doctorId: $doctorId) {
+      id
+      rating
+      feedback
+      owner {
+        id
+        name
+        photo
+      }
+      doctor {
+        id
+        name
+        photo
+      }
+    }
+  }
+`;
+
 const GET_OWNER = gql`
   query owner($ownerId: String!) {
     owner(ownerId: $ownerId) {
@@ -356,6 +376,7 @@ export {
   GET_APPOINTMENTS_DOCTOR,
   ADD_REVIEW,
   GET_REVIEWS,
+  GET_REVIEWS_DOCTOR,
   GET_OWNER,
   GET_DOCTOR,
 };
