@@ -255,9 +255,51 @@ const GET_REVIEWS = gql`
       id
       rating
       feedback
-      ownerId
-      doctorId
-      petId
+      owner {
+        id
+        name
+        photo
+      }
+      doctor {
+        id
+        name
+        photo
+      }
+    }
+  }
+`;
+
+const GET_OWNER = gql`
+  query owner($ownerId: String!) {
+    owner(ownerId: $ownerId) {
+      id
+      username
+      password
+      name
+      photo
+      address
+      dob
+      age
+      phone
+    }
+  }
+`;
+
+const GET_DOCTOR = gql`
+  query doctor($doctorId: String!) {
+    doctor(doctorId: $doctorId) {
+      id
+      username
+      password
+      name
+      photo
+      address
+      dob
+      age
+      phone
+      clinicAddress
+      clinicCity
+      experience
     }
   }
 `;
@@ -278,4 +320,6 @@ export {
   GET_APPOINTMENTS_DOCTOR,
   ADD_REVIEW,
   GET_REVIEWS,
+  GET_OWNER,
+  GET_DOCTOR,
 };

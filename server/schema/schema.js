@@ -102,6 +102,24 @@ const ReviewType = new GraphQLObjectType({
     ownerId: { type: GraphQLString },
     doctorId: { type: GraphQLString },
     petId: { type: GraphQLString },
+    owner: {
+      type: OwnerType,
+      resolve(parent, args) {
+        return Owner.findById(parent.ownerId);
+      },
+    },
+    doctor: {
+      type: DoctorType,
+      resolve(parent, args) {
+        return Doctor.findById(parent.doctorId);
+      },
+    },
+    pet: {
+      type: PetType,
+      resolve(parent, args) {
+        return Pet.findById(parent.petId);
+      },
+    },
   }),
 });
 

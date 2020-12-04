@@ -62,15 +62,15 @@ const Landing = () => {
           >
             Doctor
           </Button>
-          {/* <Button
-            to="/parlour"
+          <Button
+            to="/review"
             color="primary"
             variant="contained"
             component={RouterLink}
             style={{ width: "20%", margin: "10px" }}
           >
-            Parlour
-          </Button> */}
+            Reviews
+          </Button>
           <Button
             to="/admin"
             color="primary"
