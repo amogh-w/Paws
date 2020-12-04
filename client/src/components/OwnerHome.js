@@ -144,14 +144,15 @@ const OwnerHome = ({ user, setLoggedIn }) => {
       </div>
       <AppointmentTable loading={loading2} error={error2} data={data2} />
       <br />
-      <Typography>Your Reviews</Typography>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => setShowAddReview(true)}
-      >
-        Add Reviews
-      </Button>
+      <div style={{ textAlign: "center" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => setShowAddReview(true)}
+        >
+          Add Review
+        </Button>
+      </div>
       {showAddReview ? <OwnerReview ownerId={user.id} /> : <div></div>}
       <br />
       <div style={{ textAlign: "center" }}>
