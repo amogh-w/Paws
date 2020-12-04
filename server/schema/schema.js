@@ -37,6 +37,24 @@ const AppointmentType = new GraphQLObjectType({
     petId: { type: GraphQLString },
     appointmentType: { type: GraphQLString },
     appointmentStatus: { type: GraphQLString },
+    owner: {
+      type: OwnerType,
+      resolve(parent, args) {
+        return Owner.findById(parent.ownerId);
+      },
+    },
+    doctor: {
+      type: DoctorType,
+      resolve(parent, args) {
+        return Doctor.findById(parent.doctorId);
+      },
+    },
+    pet: {
+      type: PetType,
+      resolve(parent, args) {
+        return Pet.findById(parent.petId);
+      },
+    },
   }),
 });
 
@@ -112,12 +130,6 @@ const ReviewType = new GraphQLObjectType({
       type: DoctorType,
       resolve(parent, args) {
         return Doctor.findById(parent.doctorId);
-      },
-    },
-    pet: {
-      type: PetType,
-      resolve(parent, args) {
-        return Pet.findById(parent.petId);
       },
     },
   }),

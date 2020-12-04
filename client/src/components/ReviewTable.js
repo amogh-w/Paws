@@ -14,6 +14,9 @@ import {
 const ReviewTable = ({ loading, error, data }) => {
   if (loading) return <Typography>Loading ...</Typography>;
   if (error) return <Typography>Error ...</Typography>;
+
+  console.log(data.reviews);
+
   return (
     <div>
       <TableContainer component={Paper}>
@@ -22,9 +25,9 @@ const ReviewTable = ({ loading, error, data }) => {
             <TableRow>
               <TableCell>Rating</TableCell>
               <TableCell>Feedback</TableCell>
-              <TableCell>OwnerId</TableCell>
-              <TableCell>DoctorId</TableCell>
-              <TableCell>PetId</TableCell>
+              <TableCell>Owner</TableCell>
+              <TableCell>Doctor</TableCell>
+              {/* <TableCell>Pet</TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -34,9 +37,9 @@ const ReviewTable = ({ loading, error, data }) => {
                   {row.rating}
                 </TableCell>
                 <TableCell>{row.feedback}</TableCell>
-                <TableCell>{row.ownerId}</TableCell>
-                <TableCell>{row.doctorId}</TableCell>
-                <TableCell>{row.petId}</TableCell>
+                <TableCell>{row.owner.name}</TableCell>
+                <TableCell>{row.doctor.name}</TableCell>
+                {/* <TableCell>{row.pet.name}</TableCell> */}
                 {/* <TableCell>
                   <Button variant="outlined" color="primary">
                     Edit

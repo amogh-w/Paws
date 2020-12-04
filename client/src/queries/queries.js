@@ -170,11 +170,23 @@ const GET_APPOINTMENTS = gql`
     appointments {
       id
       date
-      ownerId
-      doctorId
-      petId
       appointmentType
       appointmentStatus
+      owner {
+        id
+        name
+        photo
+      }
+      doctor {
+        id
+        name
+        photo
+      }
+      pet {
+        id
+        name
+        photo
+      }
     }
   }
 `;
@@ -206,11 +218,23 @@ const GET_APPOINTMENTS_OWNER = gql`
     appointments(ownerId: $ownerId) {
       id
       date
-      ownerId
-      doctorId
-      petId
       appointmentType
       appointmentStatus
+      owner {
+        id
+        name
+        photo
+      }
+      doctor {
+        id
+        name
+        photo
+      }
+      pet {
+        id
+        name
+        photo
+      }
     }
   }
 `;
@@ -220,11 +244,23 @@ const GET_APPOINTMENTS_DOCTOR = gql`
     appointments(doctorId: $doctorId) {
       id
       date
-      ownerId
-      doctorId
-      petId
       appointmentType
       appointmentStatus
+      owner {
+        id
+        name
+        photo
+      }
+      doctor {
+        id
+        name
+        photo
+      }
+      pet {
+        id
+        name
+        photo
+      }
     }
   }
 `;

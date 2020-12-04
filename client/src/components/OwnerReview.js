@@ -45,7 +45,16 @@ const OwnerReview = ({ ownerId }) => {
           style={{ width: "50vw", marginBottom: "16px" }}
         >
           {dataDoc.doctors.map((doc) => {
-            return <MenuItem value={doc.id}>{doc.name}</MenuItem>;
+            return (
+              <MenuItem value={doc.id}>
+                <img
+                  src={doc.photo}
+                  style={{ width: "100px", padding: "5px" }}
+                  alt="Profile"
+                />
+                {doc.name}, <b>Clinic Location:</b> {doc.clinicAddress}
+              </MenuItem>
+            );
           })}
         </Select>
       </FormControl>
@@ -71,7 +80,7 @@ const OwnerReview = ({ ownerId }) => {
   return (
     <div>
       <div style={{ textAlign: "center" }}>
-        <Typography variant="h5">Login</Typography>
+        <Typography variant="h5">Add Review</Typography>
         <DocSelect
           loadingDoc={loadingDoc}
           errorDoc={errorDoc}

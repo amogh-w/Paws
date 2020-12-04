@@ -21,9 +21,9 @@ const AppointmentTable = ({ loading, error, data }) => {
           <TableHead>
             <TableRow>
               <TableCell>Date</TableCell>
-              <TableCell>OwnerId</TableCell>
-              <TableCell>DoctorId</TableCell>
-              <TableCell>PetId</TableCell>
+              <TableCell>Owner</TableCell>
+              <TableCell>Doctor</TableCell>
+              <TableCell>Pet</TableCell>
               <TableCell>AppointmentType</TableCell>
               <TableCell>AppointmentStatus</TableCell>
             </TableRow>
@@ -34,9 +34,9 @@ const AppointmentTable = ({ loading, error, data }) => {
                 <TableCell component="th" scope="row">
                   {row.date}
                 </TableCell>
-                <TableCell>{row.ownerId}</TableCell>
-                <TableCell>{row.doctorId}</TableCell>
-                <TableCell>{row.petId}</TableCell>
+                <TableCell>{row.owner.name}</TableCell>
+                <TableCell>{row.doctor.name}</TableCell>
+                <TableCell>{row.pet.name}</TableCell>
                 <TableCell>{row.appointmentType}</TableCell>
                 <TableCell>{row.appointmentStatus}</TableCell>
                 {/* <TableCell>

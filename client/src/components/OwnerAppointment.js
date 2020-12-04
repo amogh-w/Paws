@@ -82,7 +82,16 @@ const OwnerAppointment = ({ ownerId, setShowAddAppointment }) => {
           style={{ width: "50vw", marginBottom: "16px" }}
         >
           {dataDoc.doctors.map((doc) => {
-            return <MenuItem value={doc.id}>{doc.name}</MenuItem>;
+            return (
+              <MenuItem value={doc.id}>
+                <img
+                  src={doc.photo}
+                  style={{ width: "100px", padding: "5px" }}
+                  alt="Profile"
+                />
+                {doc.name}, <b>Clinic Location:</b> {doc.clinicAddress}
+              </MenuItem>
+            );
           })}
         </Select>
       </FormControl>
@@ -103,7 +112,16 @@ const OwnerAppointment = ({ ownerId, setShowAddAppointment }) => {
           style={{ width: "50vw" }}
         >
           {dataPet.pets.map((pet) => {
-            return <MenuItem value={pet.id}>{pet.name}</MenuItem>;
+            return (
+              <MenuItem value={pet.id}>
+                <img
+                  src={pet.photo}
+                  style={{ width: "100px", padding: "5px" }}
+                  alt="Profile"
+                />
+                {pet.name}, <b>Breed:</b> {pet.breed}
+              </MenuItem>
+            );
           })}
         </Select>
       </FormControl>
