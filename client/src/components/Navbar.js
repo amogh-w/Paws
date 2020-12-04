@@ -208,13 +208,13 @@ const Navbar = ({ darkState, handleThemeChange }) => {
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Pet</ListItemText>
-            </ListItem>
+            </ListItem> */}
             <ListItem button component={Link} to="/review">
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Review</ListItemText>
-            </ListItem> */}
+            </ListItem>
           </List>
           <Divider />
         </Drawer>
@@ -319,13 +319,13 @@ const Navbar = ({ darkState, handleThemeChange }) => {
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Pet</ListItemText>
-            </ListItem>
+            </ListItem> */}
             <ListItem button component={Link} to="/review">
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Review</ListItemText>
-            </ListItem> */}
+            </ListItem>
           </List>
           <Divider />
         </Drawer>
@@ -419,13 +419,13 @@ const Navbar = ({ darkState, handleThemeChange }) => {
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Pet</ListItemText>
-            </ListItem>
+            </ListItem> */}
             <ListItem button component={Link} to="/review">
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText>Review</ListItemText>
-            </ListItem> */}
+            </ListItem>
           </List>
           <Divider />
         </Drawer>
