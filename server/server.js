@@ -34,13 +34,10 @@ app.use(
   })
 );
 
-mongoose.connect(
-  `mongodb+srv://amogh123:amogh123@amogh-first-cluster.vdru3.mongodb.net/paws?retryWrites=true&w=majority`,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(`MONGO_URI`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 mongoose.connection.once("open", () => {
   console.log("Connected to Database");
